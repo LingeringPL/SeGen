@@ -1,0 +1,131 @@
+body{
+    text-align: center;
+    font-family: 'Courier New', Courier, sans-serif, monospace;
+}
+#notice{
+    line-height: 1.1em;
+    font-family: initial;
+}
+#header{
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+}
+#time{
+    font-size: 1ex;
+    font-family: initial;
+    width: 5ch;
+}
+#time::-webkit-inner-spin-button,
+#time::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+#generate{
+    position: static;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 24px;
+    font-family: 'Courier New', Courier, "Meiryo UI Regular", monospace;
+    margin: 1em 0 0 0;
+    padding: 10px 1em;
+    background-color: azure;
+}
+#error{
+    display: inline-block;
+    margin: 1em 0 0 0;
+    font-weight: bold;
+    background-color: #ffeeee;
+    justify-content: center;
+    width: 33%;
+}
+#content{
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+#content > *{
+    margin: 1ex;
+    border: 1px dashed gray;
+    padding: 2px;
+}
+#list{
+    height: 34em;
+    overflow-y: scroll;
+}
+textarea{
+    resize: none;
+    font-family: monospace;
+    font-size: large;
+}
+.variable, #add{
+    display: block;
+    justify-content: space-around;
+    border: 1px solid gray;
+    padding: 1ex;
+    margin: 0 0 1px 0;
+}
+.variable{
+    display: flex;
+}
+#addname{
+    width: 4em;
+}
+#addinit{
+    width: 4ch;
+}
+.info{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    border: 1px dashed lightgray;
+    padding: 0 1ex;
+    min-height: 21px;
+}
+.arrow > * > *, .anotarrowupward, .anotarrowdownward, #anotremove{
+    height: 2ex;
+    line-height: 1ex;
+}
+.arrowupward > *, .anotarrowupward{
+    position: relative;
+    vertical-align: text-top;
+}
+.arrowupward > *{
+    top: -3px;
+}
+.arrowdownward > *, .anotarrowdownward{
+    position: relative;
+    vertical-align: text-bottom;
+}
+.arrowdownward > *{
+    bottom: -3px;
+}
+#annotation{
+    font-size: medium;
+    text-align: left;
+    padding: 2em 33vw;
+}
+#annotation > p{
+    font-weight: bold;
+}
+#annotation > ol > li{
+    line-height: 1.5em;
+}
+#annotation > pre{
+    padding: 0 0 0 4ch;
+}
+#annotation > em{
+    font-style: normal;
+    font-weight: bold;
+    text-decoration-line: underline;
+    color: red;
+}
+#anotlegend{
+    font-weight: initial;
+    border: 1px solid gray;
+    padding: 1ex;
+    text-align: center;
+}
+footer{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    margin: 1em 0 0 0;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script defer type="text/javascript" src="script.js"></script>
+        <title>Series Generator</title>
+    </head>
+    <body>
+        <div id="main">
+            <p id="notice">On IE and old browsers won't work.<br>
+            This is for desktop, not to be fit for mobiles.</p>
+            <div id="header">
+                Series Generator<br>
+                <input type="number" id="time" value="1" min="1" step="1">
+                <button type="button" id="generate">Generate</button>
+            </div>
+            <div id="error"></div>
+            <br>
+            <div id="content">
+                <div id="textarea">
+                    <textarea id="text" rows="40" cols="50" placeholder="input texts here"></textarea>
+                </div>
+                <div id="variables">
+                    <form id="add">
+                        $<input type="text" id="addname"> = <input type="text" id="addinit"><br>
+                        changed by <input type="text" id="addchange"><br>
+                        <input type="checkbox" id="addcheck">Value before changes<br>
+                        <button type="button" id="addbutton">Add</button>
+                        <div></div>
+                    </form>
+                    <div id="list">
+                    </div>
+                </div>
+                <div id="out">
+                    <textarea id="textout" rows="40" cols="50" readonly placeholder="generated texts will be output here"></textarea>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="annotation">
+            <p>How to use</p>
+            <ol>
+                <li>Input texts in the left textbox</li>
+                <li>Specify how long is the series</li>
+                <li>Click the "Generate" button</li>
+                <li>The generated text will be output in the right textbox</li>
+            </ol>
+            <p>Adding variables</p>
+            Variables can be added with their initial value and how they change.<br>
+            The format to add a variable is:
+            <div id="anotlegend">
+                $<input type="text" placeholder="name" disabled> = <input type="text" placeholder="initial value" disabled><br>
+                changed by <input type="text" placeholder="function or process" disabled><br>
+                <input type="checkbox" disabled>Value before changes
+            </div>
+            <br>
+            They can be used with a "$" head in the texts, and the values automatically substitute where variables are at.<br>
+            Ex. when $1 is the default: <pre>$1 - $1 = 0</pre> will be <pre>1 - 1 = 0</pre>
+            <br>
+            The "changed by" when adding variable can specify a function or a process.<br>
+            The function or process must be in the form of:
+            <pre>$1 + 1</pre> makes $1 increase by 1.<br>
+            <pre>$1 * 1.5</pre> makes $1 multiply by 1.5.<br>
+            <pre>$1 + $2</pre> makes $1 increase by $2 (if variable named "2" doesn't exist, this makes an error). This can also makes Fibonacci sequence that represent by [1,1,2,3,5,8,...].<br>
+            <pre>$1 * Math.random()</pre> also can be used, but this is <em>not</em> recommended due to using JavaScript's functions. Only skillful users (such as programmers) should use advanced functions like this.<br>
+            <br>
+            And spaces are needed around the variables.<br>
+            Ex.: <pre>$1+2</pre> doesn't work and will make an error as referring variable named "1+2" (unless "1+2" exists, but who makes it?).<br>
+            <p>Removing and Rearranging variables</p>
+            Variables can be removed by clicking the <button id="anotremove">x</button> button.<br>
+            Variables can be rearranged by clicking the buttons:<br>
+            <ul>
+                <li><button class="anotarrowupward">-</button> moves the variable on top</li>
+                <li><button class="anotarrowupward">^</button> makes the variable ascends</li>
+                <li><button class="anotarrowdownward">v</button> makes the variable descends</li>
+                <li><button class="anotarrowdownward">-</button> moves the variable on bottom</li>
+            </ul>
+            Rearranging variables is for changing the order of the processes.<br>
+        </div>
+        <footer>
+            &copy;2022 LingeringPL
+        </footer>
+    </body>
+</html>
