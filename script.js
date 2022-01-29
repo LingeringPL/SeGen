@@ -58,7 +58,7 @@ function addVariables(init,name,intrct,check=false){
         throw new Error(`Invalid variable name ${name}`);
     }
 
-    let iinit = Number(init)?init:1;
+    let iinit = (Number(init)||init=="0")?Number(init):1;
     let sname = name?name:`${++numused}`;
     let sintrct = intrct?intrct:`$${sname} + 1`;
 
