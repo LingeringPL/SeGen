@@ -57,25 +57,31 @@
             They can be used with a "$" head in the texts, and the values automatically substitute where variables are at.<br>
             Ex. when $1 is the default: <pre>$1 - $1 = 0</pre> will be <pre>1 - 1 = 0</pre>
             <br>
-            The "changed by" when adding variable can specify a function or a process.<br>
+            The "changed by" when adding a variable specifies a function or a process.<br>
             The function or process must be in the form of:
             <pre>$1 + 1</pre> makes $1 increase by 1.<br>
             <pre>$1 * 1.5</pre> makes $1 multiply by 1.5.<br>
-            <pre>$1 + $2</pre> makes $1 increase by $2 (if variable named "2" doesn't exist, this makes an error). This can also makes Fibonacci sequence that represent by [1,1,2,3,5,8,...].<br>
+            <pre>$1 + $2</pre> makes $1 increase by $2 (if variable named "2" doesn't exist, this makes an error). This can also make a Fibonacci sequence represents by [1,1,2,3,5,8,...].<br>
             <pre>$1 * Math.random()</pre> also can be used, but this is <em>not</em> recommended due to using JavaScript's functions. Only skillful users (such as programmers) should use advanced functions like this.<br>
             <br>
             And spaces are needed around the variables.<br>
-            Ex.: <pre>$1+2</pre> doesn't work and will make an error as referring variable named "1+2" (unless "1+2" exists, but who makes it?).<br>
+            Ex.: <pre>$1+2</pre> doesn't work and will make an error as referring variable named "1+2" (unless "1+2" exists, but it can't be made usually).<br>
             <p>Removing and Rearranging variables</p>
             Variables can be removed by clicking the <button id="anotremove">x</button> button.<br>
             Variables can be rearranged by clicking the buttons:<br>
             <ul>
                 <li><button class="anotarrowupward">-</button> moves the variable on top</li>
-                <li><button class="anotarrowupward">^</button> makes the variable ascends</li>
-                <li><button class="anotarrowdownward">v</button> makes the variable descends</li>
+                <li><button class="anotarrowupward">^</button> makes the variable ascend</li>
+                <li><button class="anotarrowdownward">v</button> makes the variable descend</li>
                 <li><button class="anotarrowdownward">-</button> moves the variable on bottom</li>
             </ul>
             Rearranging variables is for changing the order of the processes.<br>
+            <br>
+            Variables can be prevented from being substituted for values the other one's included its name in the variables' name.<br>
+            Ex.: <pre>$11</pre> will <u>not</u> be substituted for $11's value if $11 comes <u>after</u> $1 on the processing order (unless $1's value was "$11" and such).<br>
+            <br>
+            Another ex.: <pre>$$11</pre> can be substituted for a value recursively as referring to $($1's&nbsp;value)1, if $1 comes <u>before</u> $11.
+            This allows referring to variables by a linear search like [$11,$21,$31,...].
         </div>
         <footer>
             &copy;2022 LingeringPL

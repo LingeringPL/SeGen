@@ -79,6 +79,7 @@ textarea{
     border: 1px dashed lightgray;
     padding: 0 1ex;
     min-height: 21px;
+    user-select: none;
 }
 .arrow > * > *, .anotarrowupward, .anotarrowdownward, #anotremove{
     height: 2ex;
