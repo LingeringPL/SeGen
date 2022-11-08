@@ -58,25 +58,26 @@ function addVariables(init,name,intrct,check=false){
         throw new Error(`Invalid variable name ${name}`);
     }
 
-    let iinit = (Number(init)||init=="0")?Number(init):1;
     let sname = name?name:`${++numused}`;
-    let sintrct = intrct?intrct:`$${sname} + 1`;
-
     let t = variables.findIndex(v => v.name == sname);
+
+    let iinit = isNaN(Number(init))?init:(t+1?variables[t].initvalue:0);
+    let sintrct = intrct?intrct:(t+1?variables[t].interaction:`$${sname} + 1`);
+
     let h = `<div class="arrow">
                 <div class="arrowupward">
-                    <button class="arrowtop" onclick="rearrangeVariable(${sname},'t')">-</button><br>
-                    <button class="arrowup" onclick="rearrangeVariable(${sname},'u')">^</button>
+                    <button class="arrowtop" onclick="rearrangeVariable('${sname}','t');">-</button><br>
+                    <button class="arrowup" onclick="rearrangeVariable('${sname}','u');">^</button>
                 </div>
                 <div class="remove">
-                    <button class="remove" onclick="removeVariable(${sname});">x</button>
+                    <button class="remove" onclick="removeVariable('${sname}');">x</button>
                 </div>
                 <div class="arrowdownward">
-                    <button class="arrowdown" onclick="rearrangeVariable(${sname},'d')">v</button><br>
-                    <button class="arrowbottom" onclick="rearrangeVariable(${sname},'b')">-</button>
+                    <button class="arrowdown" onclick="rearrangeVariable('${sname}','d');">v</button><br>
+                    <button class="arrowbottom" onclick="rearrangeVariable('${sname}','b');">-</button>
                 </div>
             </div>
-            <div class="info">
+            <div class="info" ondblclick="copyProperties('${sname}');">
                 <div>$${sname} = ${iinit}</div>
                 <div>changed by ${sintrct}</div>
                 <div>
@@ -84,7 +85,7 @@ function addVariables(init,name,intrct,check=false){
                 </div>
             </div>`;
     if(t != -1){
-        variables[t] = new Variables(sname,iinit,intrct,check);
+        variables[t] = new Variables(sname,iinit,sintrct,check);
         _variable[t].innerHTML = h;
     } else {
         variables.push(new Variables(sname,iinit,sintrct,check));
@@ -174,6 +175,14 @@ function rearrangeVariable(name, mode){
     }
 }
 
+function copyProperties(name){
+    let a = variables.find(v => v.name == name);
+    _add.children[0].value = a.name;
+    _add.children[1].value = a.initvalue;
+    _add.children[3].value = a.interaction;
+    _add.children[5].checked = a.returnBeforeEval;
+    _add.children[7].textContent = "Update";
+}
 
 function generate(){
     const input = document.getElementById("text").value;
