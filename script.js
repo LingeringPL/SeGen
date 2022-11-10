@@ -61,7 +61,7 @@ function addVariables(init,name,intrct,check=false){
     let sname = name?name:`${++numused}`;
     let t = variables.findIndex(v => v.name == sname);
 
-    let iinit = isNaN(Number(init))?init:(t+1?variables[t].initvalue:0);
+    let iinit = (!isNaN(Number(init)))?init:(t+1?variables[t].initvalue:0);
     let sintrct = intrct?intrct:(t+1?variables[t].interaction:`$${sname} + 1`);
 
     let h = `<div class="arrow">
