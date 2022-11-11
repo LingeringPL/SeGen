@@ -190,7 +190,7 @@ function generate(){
     if(input.length >= 300||times >= 1000||input.length * times >= 50000||times * variables.length >= 3000){
         let confirm = window.confirm("The generating text will be large.\nAre you sure you want to continue?");
         if(!confirm){
-            _error.innerHTML = "Generation cancelled";
+            _error.innerHTML = "Generation cancelled.";
             return;
         }
     }
@@ -212,7 +212,7 @@ function generate(){
         _error.innerHTML = `${e.name}`;
         switch(e.name){
             case "TypeError":{
-                _error.innerHTML += "<br>Maybe some variable is not defined?";
+                _error.innerHTML += "<br>Maybe some variables are not defined?";
                 break;
             }
             case "SyntaxError":{
@@ -220,12 +220,12 @@ function generate(){
                 break;
             }
             case "ReferenceError":{
-                _error.innerHTML += "<br>Check some variable name is right after \"$\".";
+                _error.innerHTML += "<br>Check some variable names are right after \"$\".";
                 break;
             }
             case "RangeError":
             case "InternalError":{
-                _error.innerHTML += "<br>Try to optimize some change function.";
+                _error.innerHTML += "<br>Try to optimize some functions.";
                 break;
             }
             default:{
